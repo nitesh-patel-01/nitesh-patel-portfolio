@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://niteshpatel.in"),
+  metadataBase: new URL("https://nitesh-patel-portfolio.vercel.app"),
   title: "Nitesh Patel – Web Developer & SEO Expert in India",
   description: "Trusted web development and SEO services focused on performance, clarity, and results — helping businesses establish a strong and reliable digital presence.",
   keywords: ["Web Developer", "SEO Expert", "India", "Freelance Web Developer", "Nitesh Patel"],
