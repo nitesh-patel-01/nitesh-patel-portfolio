@@ -27,7 +27,7 @@ const jsonLd = {
   "@type": "Person",
   "name": "Nitesh Patel",
   "jobTitle": "Web Developer & SEO Expert",
-  "url": "https://niteshpatel.in",
+  "url": "https://nitesh-patel-portfolio.vercel.app",
   "address": {
     "@type": "PostalAddress",
     "addressCountry": "IN"
