@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://niteshpatel.in/sitemap.xml',
+    sitemap: 'https://nitesh-patel-portfolio.vercel.app/sitemap.xml',
   }
 }
