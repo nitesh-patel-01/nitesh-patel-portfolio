@@ -1,34 +1,79 @@
-import Scene from "@/components/3d/Scene";
-import { Navbar } from "@/components/ui/Navbar";
-import { HeroSection } from "@/components/sections/HeroSection";
-import { AboutSection } from "@/components/sections/AboutSection";
-import { WhyChooseMeSection } from "@/components/sections/WhyChooseMeSection";
-import { ServicesSection } from "@/components/sections/ServicesSection";
-import { ProjectsSection } from "@/components/sections/ProjectsSection";
-import { TestimonialsSection } from "@/components/sections/TestimonialsSection";
-import { FaqSection } from "@/components/sections/FaqSection";
-import { ContactSection } from "@/components/sections/ContactSection";
-import { LegalPolicies } from "@/components/sections/LegalPolicies";
-import { Footer } from "@/components/ui/Footer";
+import Link from "next/link";
+import LeadForm from "./components/LeadForm";
 
-export default function Home() {
-  return (
-    <main className="relative min-h-screen">
-      <Scene />
-      
-      <div className="relative z-10 isolate">
-        <Navbar />
-        <HeroSection />
-        <AboutSection />
-        <WhyChooseMeSection />
-        <ServicesSection />
-        <ProjectsSection />
-        <TestimonialsSection />
-        <FaqSection />
-        <ContactSection />
-        <LegalPolicies />
-        <Footer />
-      </div>
-    </main>
-  );
-}
+const skills=[
+  ["⌘","Frontend Development",["HTML5","CSS3","JavaScript ES6+","React.js","Responsive Design","CSS Animations"]],
+  ["⚙","Backend & APIs",["Node.js","Express.js","REST APIs","Git / GitHub","Vercel","Render"]],
+  ["↗","SEO & Growth",["Technical SEO","Schema Markup","Core Web Vitals","Local SEO","Google Search Console","PageSpeed"]],
+  ["◇","E-Commerce & CMS",["Store Development","Blogspot / CMS","Payment Integration","Conversion Design","Product SEO","AdSense"]],
+  ["✦","Marketing & Design",["Digital Marketing","Social Media","Graphic Design","Brand Identity","Lead Funnels","Content Strategy"]],
+  ["◉","Tools & Platforms",["Google Analytics","GTM","Figma","Canva Pro","WhatsApp API","Ahrefs / Semrush"]],
+];
+const services=[
+  ["01","Website Development","Custom, fast and responsive business websites with clean code, strategic copy hierarchy and SEO built in from day one.","/services/web-development"],
+  ["02","SEO + GEO Optimization","Technical, on-page and AI-search optimization that helps Google understand your pages and answer engines cite your expertise.","/services/seo-geo"],
+  ["03","E-Commerce Solutions","Search-ready online stores with persuasive products, secure payments and conversion-focused buying journeys.","/services/ecommerce"],
+  ["04","Landing Pages","Focused campaign pages that align the ad, visitor need and one primary conversion action.","/services/landing-pages"],
+  ["05","Digital Marketing","Content, social campaigns and measurable lead funnels designed around business outcomes—not vanity metrics.","/contact"],
+  ["06","Brand & Graphic Design","Logos, identity systems and campaign creatives that make the business look credible, consistent and memorable.","/contact"],
+];
+const projects=[
+  ["Retail Consulting","John Stamang","Authority platform for retail store owners, built to establish professional expertise.","https://johnstamang.in","JS"],
+  ["Education / SaaS","College Management System","Student records, attendance, fee management and educational administration.","https://college-managementsystem.blogspot.com","CM"],
+  ["Real Estate","AKG Properties","Property listings, local SEO and lead capture for the Bhopal property market.","https://akgoudproperties.com","AK"],
+  ["E-Commerce","HappyHealing HappyFeeling","A handloom saree platform shaped around culture, conscious commerce and trust.","https://veenapujar.in","HH"],
+  ["Digital Agency","AnyMedia Worx","Brand and service platform for a modern creative and digital agency.","https://anymediaworx.com","AW"],
+  ["Manufacturing","F4L Manufacturing","Corporate manufacturing website structured for credibility and enquiries.","https://f4l-mst.com","F4"],
+  ["Health & Fitness","FitCoach","Modern fitness coaching experience with plans and lead capture.","https://fit-coach-olive.vercel.app","FC"],
+  ["SaaS / Web Tool","Flipbook Converter","Full-stack PDF-to-interactive-flipbook tool with download flow.","https://flipbook-converter-1.onrender.com","FL"],
+  ["Business Utility","Invoice Generator","Instant professional invoice creation, preview and export for small businesses.","https://invoice-generator-roan-five.vercel.app","IG"],
+];
+const testimonials=[
+ ["Our salon website went from invisible to the first result on Google for local searches. Bookings tripled in five months—and we spent ₹0 on ads.","Sunita Khanna","Glow Beauty Studio · Indore","3× bookings"],
+ ["Nitesh delivered our e-commerce store ahead of schedule. The checkout is smooth, the design feels premium, and we crossed ₹3 lakh in our first month.","Priya Sharma","Drape & Dye · Mumbai","₹3.2L month one"],
+ ["We were getting three leads a month. After the redesign and proper SEO, we began closing 25–30 leads every month.","Rohit Verma","AKG Properties · Bhopal","28 leads / month"],
+ ["Transparent, on-time and exactly what he promised. The website looks like it cost five times more.","Amit Mehta","AnyMedia Worx · Bangalore","On time & budget"],
+ ["The consulting website ranks for multiple keywords in our niche. International clients regularly comment on how professional it looks.","John Stamang","Retail Consultant","15+ keywords"],
+ ["Quick communication and clean work. Our PageSpeed improved from 42 to 97.","Neha Kapoor","Startup Founder · Delhi","42 → 97 speed"],
+];
+const faqs=[
+ ["How much does a website cost in India?","Packages start at ₹6,999 for a focused starter website, ₹14,999 for a full business website, and ₹24,999 for premium or e-commerce work. Complex integrations receive a custom quote."],
+ ["How long does a website take?","Starter projects usually take about two weeks, business websites three to four weeks, and premium or e-commerce builds four to six weeks. Scope and content readiness affect the schedule."],
+ ["Do you offer a free website audit?","Yes. The free audit reviews technical SEO, PageSpeed, mobile usability, content clarity and missed lead-generation opportunities."],
+ ["Will my website rank on Google?","Every build includes a strong technical and on-page foundation. No ethical professional can guarantee a specific ranking, but the site will be structured to earn visibility and support ongoing growth."],
+ ["Do you optimize for AI search and answer engines?","Yes. GEO work includes entity clarity, direct answer passages, structured data, source-worthy content, author signals, crawl access and a machine-readable llms.txt guide."],
+ ["Can you redesign without losing existing rankings?","Yes. I audit existing URLs, metadata and traffic, preserve valuable content, plan redirects and verify the new structure before migration."],
+ ["Which locations do you serve?","I work remotely across India—including Delhi, Mumbai, Bangalore, Pune, Indore, Bhopal, Jabalpur and Hyderabad—and with international clients."],
+ ["Do you provide post-launch support?","All packages include one to six months of support depending on scope. Ongoing maintenance is also available."],
+];
+
+function Header(){return <header className="topbar"><Link className="logo" href="/">NITESH<span>.</span><small>AVAILABLE</small></Link><nav><a href="#about">About</a><a href="#results">Results</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#portfolio">Portfolio</a><Link href="/insights">Insights</Link><a className="navcta" href="#contact">Free audit ↗</a></nav></header>}
+function SectionTitle({label,title,copy}:{label:string,title:string,copy?:string}){return <div className="section-intro"><span className="section-no">{label}</span><div><h2 dangerouslySetInnerHTML={{__html:title}}/>{copy&&<p>{copy}</p>}</div></div>}
+
+export default function Home(){return <><Header/><main>
+  <section className="hero2"><div className="hero-grid"/><div className="hero-copy"><div className="availability"><i/> Available — only 3 project slots this month</div><p className="overline">WEB DEVELOPER · SEO EXPERT · INDIA</p><h1>I build websites<br/>that turn <em>traffic</em><br/>into <em>customers.</em></h1><p className="hero-lede">Fast, distinctive and rank-ready digital experiences for businesses that want measurable growth—not another forgettable website.</p><div className="hero-actions"><a className="primary" href="#contact">Get your free audit <b>↗</b></a><a className="secondary" href="#results">See real results ↓</a></div></div><aside className="profile-card"><div className="portrait"><img src="https://i.ibb.co/1GLx3CV8/web-dev-nitesh.png" alt="Nitesh Patel, web developer and SEO expert in India"/><span>NP / 2026</span></div><div className="profile-name"><div><h2>Nitesh Patel</h2><p>Web Developer & SEO Expert</p></div><b>INDIA<br/>→ GLOBAL</b></div><div className="tech-row"><span>React.js</span><span>Node.js</span><span>Technical SEO</span><span>GEO</span></div></aside></section>
+  <section className="proofbar"><div><b>120<sup>+</sup></b><span>Projects delivered</span></div><div><b>100<sup>+</sup></b><span>Happy clients</span></div><div><b>3<sup>+</sup></b><span>Years experience</span></div><div><b>99</b><span>Avg. PageSpeed</span></div><div><b>3×</b><span>Lead-growth focus</span></div></section>
+  <div className="marquee"><div>WEB DEVELOPMENT ✦ SEO OPTIMIZATION ✦ E-COMMERCE ✦ GENERATIVE ENGINE OPTIMIZATION ✦ CORE WEB VITALS ✦ LEAD GENERATION ✦ RESPONSIVE DESIGN ✦ SCHEMA MARKUP ✦</div></div>
+
+  <section id="about" className="block about"><SectionTitle label="01 / ABOUT" title={'From frustrated client to the developer <em>he wished he had.</em>'}/><div className="about-grid"><div className="story"><p className="dropcap">A family friend once spent ₹35,000 on a “professional” website. It took three months, looked outdated on mobile and never ranked on Google.</p><p>He received zero leads. The agency disappeared after launch. Watching him slowly give up on growing online changed how I thought about web development.</p><p>I learned not only how to code, but how positioning, search intent, Core Web Vitals, content and conversion design work together. Today I build the kind of website I wish he had received.</p><blockquote>“Your website should be your hardest-working salesperson—not a digital brochure.”</blockquote></div><div className="about-side"><div className="mini-portrait"><img src="https://i.ibb.co/1GLx3CV8/web-dev-nitesh.png" alt="Portrait of Nitesh Patel"/></div><ul><li><b>Agency experience</b><span>MBG Cards India Pvt. Ltd. partner</span></li><li><b>Pan-India + global</b><span>Remote-friendly collaboration worldwide</span></li><li><b>SEO-first builder</b><span>Visibility planned before the first page ships</span></li><li><b>Lead-gen focused</b><span>Every key page has a conversion goal</span></li></ul></div></div></section>
+
+  <section className="block skills"><SectionTitle label="02 / TOOLKIT" title={'Skills that connect <em>design, code and growth.</em>'} copy="Every tool is selected to make the site faster, easier to discover and more persuasive to the right customer."/><div className="skill-grid">{skills.map(s=><article key={s[1] as string}><i>{s[0]}</i><h3>{s[1]}</h3><div>{(s[2] as string[]).map(x=><span key={x}>{x}</span>)}</div></article>)}</div></section>
+
+  <section id="results" className="block results"><SectionTitle label="03 / OUTCOMES" title={'Numbers do not lie.<br/><em>Here is the proof.</em>'} copy="Selected before-and-after outcomes from the supplied portfolio. Results depend on market, offer and execution."/><div className="result-grid"><article className="result-card lime"><span>BEAUTY & WELLNESS · INDORE</span><h3>Glow Beauty Studio</h3><p>From no meaningful online visibility to a mobile-first local search presence targeting high-intent bookings.</p><div className="stat-grid"><b>0→5K<small>monthly visitors</small></b><b>3×<small>booking increase</small></b><b>#1<small>local rank</small></b><b>₹0<small>ad spend</small></b></div></article><article className="result-card violet"><span>REAL ESTATE · BHOPAL</span><h3>AKG Properties</h3><p>Redesigned an outdated property site with search-focused pages and a clearer enquiry funnel.</p><div className="stat-grid"><b>+340%<small>organic traffic</small></b><b>28/mo<small>qualified leads</small></b><b>97<small>PageSpeed</small></b><b>4 mo<small>to traction</small></b></div></article><article className="result-card blue"><span>E-COMMERCE · MUMBAI</span><h3>Drape & Dye</h3><p>Launched an SEO-ready storefront with optimized products, structured data and a smoother checkout.</p><div className="stat-grid"><b>₹3.2L<small>month-one revenue</small></b><b>4.2%<small>conversion rate</small></b><b>1.8s<small>load time</small></b><b>85+<small>products indexed</small></b></div></article></div><div className="more-work results-link"><strong>See the strategy behind the numbers</strong><span>Detailed challenges, implementation choices and transparent outcome context.</span><Link href="/case-studies">Read all case studies →</Link></div></section>
+
+  <section id="services" className="block services"><SectionTitle label="04 / SERVICES" title={'Everything needed to <em>win online.</em>'} copy="One accountable partner across strategy, design, development, visibility and conversion."/><div className="service-stack">{services.map(s=><Link href={s[3]} key={s[0]}><span>{s[0]}</span><h3>{s[1]}</h3><p>{s[2]}</p><b>↗</b></Link>)}</div></section>
+
+  <section className="block compare"><SectionTitle label="05 / THE DIFFERENCE" title={'The middle ground between <em>cheap and bloated.</em>'}/><div className="compare-wrap"><table><thead><tr><th>What matters</th><th>Other freelancers</th><th>Large agencies</th><th>Nitesh Patel</th></tr></thead><tbody>{[["Typical investment","₹2K–5K","₹50K–3L+","₹7K–25K"],["SEO foundation","Rarely","Often extra","Always included"],["Communication","Ghosting risk","Multiple layers","Direct WhatsApp"],["Delivery","Unpredictable","2–6 months","2–6 weeks"],["Speed target","Rarely tested","Sometimes","90+ target"],["Post-launch support","Often none","Paid AMC","1–6 months included"],["Business thinking","Task focused","Account managed","Growth focused"]].map(r=><tr key={r[0]}>{r.map((x,i)=><td key={x} className={i===3?"winner":""}>{i===3&&"✓ "}{x}</td>)}</tr>)}</tbody></table></div></section>
+
+  <section id="pricing" className="block pricing"><SectionTitle label="06 / PRICING" title={'Clear packages.<br/><em>Zero surprises.</em>'} copy="Every package includes responsive design, essential SEO and direct communication."/><div className="price-grid"><article><span>STARTER</span><h3>₹6,999</h3><p>For local businesses and early-stage founders.</p><ul><li>Up to 5 core pages</li><li>Mobile-responsive build</li><li>Essential on-page SEO</li><li>Contact form + WhatsApp</li><li>Analytics setup</li><li>Two-week delivery</li><li>One month support</li></ul><a href="#contact">Choose Starter ↗</a></article><article className="featured"><i>MOST POPULAR</i><span>BUSINESS</span><h3>₹14,999</h3><p>For growing businesses serious about leads.</p><ul><li>Up to 12 strategic pages</li><li>Premium custom design</li><li>Full on-page SEO + schema</li><li>Lead capture / CRM integration</li><li>90+ speed target</li><li>Three to four-week delivery</li><li>Three months support</li></ul><a href="#contact">Start Business ↗</a></article><article><span>PREMIUM</span><h3>₹24,999</h3><p>For e-commerce and advanced growth projects.</p><ul><li>Expanded page system</li><li>E-commerce or custom features</li><li>Advanced SEO + GEO</li><li>Conversion optimization</li><li>Priority delivery</li><li>Reporting foundation</li><li>Six months support</li></ul><a href="#contact">Discuss Premium ↗</a></article></div><p className="pricing-note">Not sure which fits? <a href="#contact">Get a free recommendation based on your goals →</a></p></section>
+
+  <section id="portfolio" className="block portfolio"><SectionTitle label="07 / PORTFOLIO" title={'Real projects you can <em>visit right now.</em>'} copy="Client platforms and independent products across consulting, property, commerce, education and useful web tools."/><div className="project-grid">{projects.map((p,i)=><a href={p[3]} target="_blank" rel="noreferrer" className={`project p${i%4}`} key={p[1]}><div className="project-mark">{p[4]}</div><span>{p[0]}</span><h3>{p[1]}</h3><p>{p[2]}</p><b>Visit live project ↗</b></a>)}</div><div className="more-work"><strong>100+ more projects delivered</strong><span>across multiple industries, platforms and business stages.</span><Link href="/work">View extended portfolio →</Link></div></section>
+
+  <section id="testimonials" className="block reviews"><SectionTitle label="08 / CLIENT STORIES" title={'Trusted by businesses that <em>measure results.</em>'}/><div className="review-grid">{testimonials.map(t=><article key={t[1]}><div className="stars">★★★★★</div><blockquote>“{t[0]}”</blockquote><div className="review-person"><span>{t[1].split(" ").map(x=>x[0]).join("")}</span><p><b>{t[1]}</b><small>{t[2]}</small></p><em>{t[3]}</em></div></article>)}</div></section>
+
+  <section id="faq" className="block faq"><SectionTitle label="09 / FAQ" title={'Straight answers before <em>you invest.</em>'}/><div className="faq-list">{faqs.map((f,i)=><details key={f[0]} open={i===0}><summary><span>{String(i+1).padStart(2,"0")}</span>{f[0]}<b>+</b></summary><p>{f[1]}</p></details>)}</div></section>
+
+  <section className="block insights-home"><SectionTitle label="10 / INSIGHTS" title={'Useful expertise,<br/><em>made searchable.</em>'}/><div className="insight-grid"><Link href="/insights/seo-vs-geo"><span>SEO + AI SEARCH</span><h3>SEO vs GEO: what businesses actually need in 2026</h3><p>How traditional rankings and generative answers work together.</p><b>Read guide →</b></Link><Link href="/insights/website-cost-india"><span>BUYER GUIDE</span><h3>How much does a good business website cost in India?</h3><p>Scope, price ranges and what to ask before hiring.</p><b>Read guide →</b></Link><Link href="/insights/website-audit-checklist"><span>CHECKLIST</span><h3>The 15-point website audit for speed, search and sales</h3><p>A practical self-audit before you pay for a redesign.</p><b>Read guide →</b></Link></div></section>
+
+  <section id="contact" className="block contact"><div className="contact-copy"><span>FREE AUDIT + CONSULTATION</span><h2>Let’s grow your<br/><em>business online.</em></h2><p>Get a personalized website and growth plan within 24 hours. No generic template, no pressure and no hidden upsell.</p><div className="contact-benefits"><div><b>01</b><span><strong>Free website audit</strong>SEO, speed and conversion opportunities</span></div><div><b>02</b><span><strong>30-minute strategy call</strong>A clear conversation about your goals</span></div><div><b>03</b><span><strong>Custom project quote</strong>Scope, schedule and transparent pricing</span></div><div><b>04</b><span><strong>Reply within 24 hours</strong>Mon–Sat, 9 AM–7 PM IST</span></div></div></div><LeadForm/></section>
+ </main><a className="whatsapp" href="https://wa.me/917974823298" aria-label="Chat on WhatsApp">✆<span>Let’s talk</span></a><footer><div><Link className="logo" href="/">NITESH<span>.</span></Link><p>Web development, SEO and GEO helping Indian businesses earn visibility, trust and qualified enquiries.</p><div className="legal-links"><Link href="/privacy">Privacy</Link><Link href="/disclaimer">Disclaimer</Link></div></div><div><h3>Explore</h3><Link href="/about">About</Link><Link href="/case-studies">Case Studies</Link><a href="#pricing">Pricing</a><Link href="/insights">Insights</Link><Link href="/locations">Locations</Link><Link href="/industries">Industries</Link></div><div><h3>Services</h3><Link href="/services/web-development">Web Development</Link><Link href="/services/seo-geo">SEO + GEO</Link><Link href="/services/ecommerce">E-Commerce</Link><Link href="/services/landing-pages">Landing Pages</Link></div><div><h3>Contact</h3><a href="tel:+917974823298">+91 79748 23298</a><a href="mailto:niteshpatel7479@gmail.com">niteshpatel7479@gmail.com</a><a href="https://instagram.com/_nitesh_visions">@_nitesh_visions</a></div><small>© 2026 Nitesh Patel · Web Developer & SEO Expert India · Built for people, Google and AI answers.</small></footer></>}
